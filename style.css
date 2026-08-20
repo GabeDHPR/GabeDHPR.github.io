@@ -3,12 +3,6 @@
    Just copy this CSS and the matching HTML; it works on any
    background. Tweak the custom properties on .aero-window to taste.
    --------------------------------------------------------------- */
-.desktop{
-    background-color: #1f79b0;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .fonte-arquivo{
     font-size: 12px;
     font-family: Segoe UI, Tahoma, Geneva, Verdana, system-ui, sans-serif;

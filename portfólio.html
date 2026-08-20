@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="desktop" class="desktop" style="padding: 20px; display: flex; gap: 20px;">
-        <div class="icone" onclick="abrirJanela('janela-sobre')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+    <div id="desktop" style="padding: 100px; display: flex; gap: 50px;">
+        <div class="icone" onclick="abrirJanela('janela-sobre', this)" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
             <img src=168.png width="100" alt="Sobre">
             <br class="fonte-arquivo">Sobre mim
         </div>
-        <div class="icone" onclick="abrirJanela('janela-formações')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+        <div class="icone" onclick="abrirJanela('janela-formações',this)" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
             <img src=livro.png width="100" alt="Formações">
             <br class="fonte-arquivo">Formações
         </div>
@@ -28,7 +28,7 @@
             <br class="fonte-arquivo">Experiências
         </div>
     </div> 
-    <div id="janela-sobre" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+    <div id="janela-sobre" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
             <img src=168.png class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Sobre mim</div>
@@ -45,7 +45,7 @@
             <div class="aero-gripper"></div>
         </div>
     </div>
-    <div id="janela-formações" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+    <div id="janela-formações" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
             <img src=livro.png class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Formações</div>
