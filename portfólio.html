@@ -6,31 +6,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="desktop" style="padding: 100px; display: flex; gap: 50px;">
-        <div class="icone" onclick="abrirJanela('janela-sobre', this)" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
-            <img src=168.png width="100" alt="Sobre">
-            <br class="fonte-arquivo">Sobre mim
+    <div id="desktop">
+        <div class="icone" onclick="abrirJanela('janela-sobre', this)">
+            <div class="bolha"><img src="168.png" alt="Sobre"></div>
+            <span class="fonte-arquivo">Sobre mim</span>
         </div>
-        <div class="icone" onclick="abrirJanela('janela-formações',this)" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
-            <img src=livro.png width="100" alt="Formações">
-            <br class="fonte-arquivo">Formações
+        <div class="icone" onclick="abrirJanela('janela-formações', this)">
+            <div class="bolha"><img src="livro.png" alt="Formações"></div>
+            <span class="fonte-arquivo">Formações</span>
         </div>
-        <div class="icone" onclick="abrirJanela('janela-projetos')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
-            <img src=218.png width="100" alt="Projetos">
-            <br class="fonte-arquivo">Projetos
+        <div class="icone" onclick="abrirJanela('janela-projetos', this)">
+            <div class="bolha"><img src="218.png" alt="Projetos"></div>
+            <span class="fonte-arquivo">Projetos</span>
         </div>
-        <div class="icone" onclick="abrirJanela('janela-contatos')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
-            <img src=120.png width="100" alt="Contatos">
-            <br class="fonte-arquivo">Contatos
+        <div class="icone" onclick="abrirJanela('janela-contatos', this)">
+            <div class="bolha"><img src="120.png" alt="Contatos"></div>
+            <span class="fonte-arquivo">Contatos</span>
         </div>
-        <div class="icone" onclick="abrirJanela('janela-experiencias')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
-            <img src=098.png width="100" alt="Experiências">
-            <br class="fonte-arquivo">Experiências
+        <div class="icone" onclick="abrirJanela('janela-experiencias', this)">
+            <div class="bolha"><img src="098.png" alt="Experiências"></div>
+            <span class="fonte-arquivo">Experiências</span>
         </div>
-    </div> 
+    </div>
+
+    <!-- Espaço reservado pro card com nome/apresentação (canto inferior direito) -->
+    <div id="cartao-apresentacao"></div>
+
     <div id="janela-sobre" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src=168.png class="aero-titlebar-icon" alt="icon">
+            <img src="168.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Sobre mim</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -45,9 +49,10 @@
             <div class="aero-gripper"></div>
         </div>
     </div>
+
     <div id="janela-formações" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src=livro.png class="aero-titlebar-icon" alt="icon">
+            <img src="livro.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Formações</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -59,13 +64,13 @@
              Formações acadêmicas e cursos que você fez, com detalhes, datas e instituições. Aqui você pode colocar imagens, textos, links para certificados, etc.
         </div>
         <div class="aero-statusbar">
-            
             <div class="aero-gripper"></div>
         </div>
     </div>
-    <div id="janela-projetos" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+
+    <div id="janela-projetos" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src=218.png class="aero-titlebar-icon" alt="icon">
+            <img src="218.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Projetos</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -77,13 +82,13 @@
              Projetos que você desenvolveu, com descrições, datas e instituições. Aqui você pode colocar imagens, textos, links para repositórios, etc.
         </div>
         <div class="aero-statusbar">
-            
             <div class="aero-gripper"></div>
         </div>
     </div>
-    <div id="janela-contatos"  class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+
+    <div id="janela-contatos" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src=120.png class="aero-titlebar-icon" alt="icon">
+            <img src="120.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Contatos</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -95,13 +100,13 @@
              Informações de contato, como e-mail, telefone e redes sociais. Aqui você pode colocar imagens, textos, links para perfis, etc.
         </div>
         <div class="aero-statusbar">
-            
             <div class="aero-gripper"></div>
         </div>
     </div>
-    <div id="janela-experiencias" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+
+    <div id="janela-experiencias" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src=098.png class="aero-titlebar-icon" alt="icon">
+            <img src="098.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Experiências</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -113,10 +118,10 @@
              Informações de experiência, como cargos, datas e instituições. Aqui você pode colocar imagens, textos, links para perfis, etc.
         </div>
         <div class="aero-statusbar">
-            
             <div class="aero-gripper"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

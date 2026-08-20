@@ -18,7 +18,7 @@
   --glass: hsl(var(--hue) 65% 52% / var(--glass-opacity));
   --frame: 9px;
 
-  position: relative;
+  position: fixed;
   isolation: isolate;
   width: 520px;
   border-radius: var(--radius);
@@ -70,12 +70,19 @@
   padding: 0 6px;
   min-height: 30px;
   border-radius: var(--radius) var(--radius) 0 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
   /* faint self-contained brushed sheen */
   background: repeating-linear-gradient(
     108deg,
     rgba(255, 255, 255, 0.05) 0 1px,
     transparent 1px 5px
   );
+}
+
+.aero-window .aero-titlebar.arrastando {
+  cursor: grabbing;
 }
 
 .aero-window .aero-titlebar-icon {
@@ -278,4 +285,149 @@
 .aero-window.inactive .aero-titlebar-text {
   color: #5a5a5a;
   text-shadow: 0 0 4px #fff, 0 0 6px #fff;
+}
+
+/* ---------------------------------------------------------------
+   Fundo da página — preenche a tela toda (referência 1920x1080)
+   --------------------------------------------------------------- */
+html, body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: url("fundo frutiger.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/* ---------------------------------------------------------------
+   Ícones do desktop — bolhas de vidro flutuando no lugar
+   --------------------------------------------------------------- */
+#desktop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 70px 90px;
+  padding: 140px 120px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /* reserva a coluna direita (onde vai o card de apresentação) em
+     todas as linhas, não só na última */
+  max-width: calc(100vw - 420px);
+}
+
+.icone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+  color: #000;
+  /* área de toque um pouco maior que a bolha, sem cortar a animação */
+  padding-top: 8px;
+}
+
+/* Bolha de vidro que envolve o ícone */
+.icone .bolha {
+  position: relative;
+  isolation: isolate;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  animation-name: bolha-flutuar;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Vidro colorido + brilho especular, no mesmo espírito do .aero-window */
+.icone .bolha::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.6), transparent 46%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.04) 55%),
+    hsl(205 75% 55% / 0.35);
+  box-shadow:
+    inset 0 0 14px rgba(255, 255, 255, 0.55),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.18),
+    0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Fosca o que está atrás da bolha, reforçando o efeito de vidro */
+.icone .bolha::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(6px) saturate(1.6);
+  backdrop-filter: blur(6px) saturate(1.6);
+}
+
+.icone .bolha img {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+.icone .fonte-arquivo {
+  font-size: 14px;
+  text-shadow: 0 0 4px #fff, 0 0 4px #fff, 0 0 7px #fff;
+}
+
+/* Leve zoom/realce ao passar o mouse, sem interromper a flutuação */
+.icone:hover .bolha {
+  filter: brightness(1.08);
+}
+
+/* Flutuação bem sutil: sobe/desce e gira um pouco, sempre voltando
+   ao lugar — nunca sai da área da bolha. */
+@keyframes bolha-flutuar {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(2px, -7px) rotate(0.6deg); }
+  50%  { transform: translate(-1.5px, -3px) rotate(-0.5deg); }
+  75%  { transform: translate(-2px, -8px) rotate(0.4deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Duração/atraso diferentes em cada ícone para não flutuarem em
+   sincronia (fica mais orgânico, "vivo"). */
+.icone:nth-child(1) .bolha { animation-duration: 4.6s; animation-delay: 0s; }
+.icone:nth-child(2) .bolha { animation-duration: 5.3s; animation-delay: -1.4s; }
+.icone:nth-child(3) .bolha { animation-duration: 4.9s; animation-delay: -2.7s; }
+.icone:nth-child(4) .bolha { animation-duration: 5.6s; animation-delay: -0.6s; }
+.icone:nth-child(5) .bolha { animation-duration: 4.3s; animation-delay: -3.2s; }
+
+/* Respeita quem prefere menos movimento na tela */
+@media (prefers-reduced-motion: reduce) {
+  .icone .bolha {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Espaço reservado no canto inferior direito para o card com
+   nome/apresentação. É só um placeholder — estilize/remova a
+   borda tracejada quando for montar o card de verdade.
+   --------------------------------------------------------------- */
+#cartao-apresentacao {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 360px;
+  min-height: 180px;
+  border: 1px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
 }
