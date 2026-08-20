@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio Gabe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="desktop" class="desktop" style="padding: 20px; display: flex; gap: 20px;">
+        <div class="icone" onclick="abrirJanela('janela-sobre')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+            <img src=168.png width="100" alt="Sobre">
+            <br class="fonte-arquivo">Sobre mim
+        </div>
+        <div class="icone" onclick="abrirJanela('janela-formações')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+            <img src=livro.png width="100" alt="Formações">
+            <br class="fonte-arquivo">Formações
+        </div>
+        <div class="icone" onclick="abrirJanela('janela-projetos')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+            <img src=218.png width="100" alt="Projetos">
+            <br class="fonte-arquivo">Projetos
+        </div>
+        <div class="icone" onclick="abrirJanela('janela-contatos')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+            <img src=120.png width="100" alt="Contatos">
+            <br class="fonte-arquivo">Contatos
+        </div>
+        <div class="icone" onclick="abrirJanela('janela-experiencias')" style="cursor: pointer; text-align: center; color: rgb(0, 0, 0);">          
+            <img src=098.png width="100" alt="Experiências">
+            <br class="fonte-arquivo">Experiências
+        </div>
+    </div> 
+    <div id="janela-sobre" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+        <div class="aero-titlebar">
+            <img src=168.png class="aero-titlebar-icon" alt="icon">
+            <div class="aero-titlebar-text">Sobre mim</div>
+            <div class="aero-caption">
+                <button class="min" title="Minimizar"></button>
+                <button class="max" title="Maximizar"></button>
+                <button class="close" title="Fechar" onclick="fecharJanela('janela-sobre')"></button>
+            </div>
+        </div>
+        <div class="aero-body">
+            Sobre mim
+        </div>
+        <div class="aero-statusbar">
+            <div class="aero-gripper"></div>
+        </div>
+    </div>
+    <div id="janela-formações" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+        <div class="aero-titlebar">
+            <img src=livro.png class="aero-titlebar-icon" alt="icon">
+            <div class="aero-titlebar-text">Formações</div>
+            <div class="aero-caption">
+                <button class="min" title="Minimizar"></button>
+                <button class="max" title="Maximizar"></button>
+                <button class="close" title="Fechar" onclick="fecharJanela('janela-formações')"></button>
+            </div>
+        </div>
+        <div class="aero-body">
+             Formações acadêmicas e cursos que você fez, com detalhes, datas e instituições. Aqui você pode colocar imagens, textos, links para certificados, etc.
+        </div>
+        <div class="aero-statusbar">
+            
+            <div class="aero-gripper"></div>
+        </div>
+    </div>
+    <div id="janela-projetos" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+        <div class="aero-titlebar">
+            <img src=218.png class="aero-titlebar-icon" alt="icon">
+            <div class="aero-titlebar-text">Projetos</div>
+            <div class="aero-caption">
+                <button class="min" title="Minimizar"></button>
+                <button class="max" title="Maximizar"></button>
+                <button class="close" title="Fechar" onclick="fecharJanela('janela-projetos')"></button>
+            </div>
+        </div>
+        <div class="aero-body">
+             Projetos que você desenvolveu, com descrições, datas e instituições. Aqui você pode colocar imagens, textos, links para repositórios, etc.
+        </div>
+        <div class="aero-statusbar">
+            
+            <div class="aero-gripper"></div>
+        </div>
+    </div>
+    <div id="janela-contatos"  class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+        <div class="aero-titlebar">
+            <img src=120.png class="aero-titlebar-icon" alt="icon">
+            <div class="aero-titlebar-text">Contatos</div>
+            <div class="aero-caption">
+                <button class="min" title="Minimizar"></button>
+                <button class="max" title="Maximizar"></button>
+                <button class="close" title="Fechar" onclick="fecharJanela('janela-contatos')"></button>
+            </div>
+        </div>
+        <div class="aero-body">
+             Informações de contato, como e-mail, telefone e redes sociais. Aqui você pode colocar imagens, textos, links para perfis, etc.
+        </div>
+        <div class="aero-statusbar">
+            
+            <div class="aero-gripper"></div>
+        </div>
+    </div>
+    <div id="janela-experiencias" class="aero-window" style="display: none;top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
+        <div class="aero-titlebar">
+            <img src=098.png class="aero-titlebar-icon" alt="icon">
+            <div class="aero-titlebar-text">Experiências</div>
+            <div class="aero-caption">
+                <button class="min" title="Minimizar"></button>
+                <button class="max" title="Maximizar"></button>
+                <button class="close" title="Fechar" onclick="fecharJanela('janela-experiencias')"></button>
+            </div>
+        </div>
+        <div class="aero-body">
+             Informações de experiência, como cargos, datas e instituições. Aqui você pode colocar imagens, textos, links para perfis, etc.
+        </div>
+        <div class="aero-statusbar">
+            
+            <div class="aero-gripper"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
