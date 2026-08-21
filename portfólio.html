@@ -8,33 +8,39 @@
 <body>
     <div id="desktop">
         <div class="icone" onclick="abrirJanela('janela-sobre', this)">
-            <div class="bolha"><img src="168.png" alt="Sobre"></div>
+            <div class="bolha"><img src="visuais/168.png" alt="Sobre"></div>
             <span class="fonte-arquivo">Sobre mim</span>
         </div>
         <div class="icone" onclick="abrirJanela('janela-formações', this)">
-            <div class="bolha"><img src="livro.png" alt="Formações"></div>
+            <div class="bolha"><img src="visuais/livro.png" alt="Formações"></div>
             <span class="fonte-arquivo">Formações</span>
         </div>
         <div class="icone" onclick="abrirJanela('janela-projetos', this)">
-            <div class="bolha"><img src="218.png" alt="Projetos"></div>
+            <div class="bolha"><img src="visuais/218.png" alt="Projetos"></div>
             <span class="fonte-arquivo">Projetos</span>
         </div>
         <div class="icone" onclick="abrirJanela('janela-contatos', this)">
-            <div class="bolha"><img src="120.png" alt="Contatos"></div>
+            <div class="bolha"><img src="visuais/120.png" alt="Contatos"></div>
             <span class="fonte-arquivo">Contatos</span>
         </div>
         <div class="icone" onclick="abrirJanela('janela-experiencias', this)">
-            <div class="bolha"><img src="098.png" alt="Experiências"></div>
+            <div class="bolha"><img src="visuais/098.png" alt="Experiências"></div>
             <span class="fonte-arquivo">Experiências</span>
         </div>
     </div>
 
-    <!-- Espaço reservado pro card com nome/apresentação (canto inferior direito) -->
-    <div id="cartao-apresentacao"></div>
+    <div id="cartao-apresentacao">
+        <div class="balao-fala">
+            <p id="texto-balao">Sou Gabriel Dahlem e aqui se encontra meu portfólio!</p>
+        </div>
+        <div class="bolha-avatar">
+            <img src="visuais/perfil.png" alt="Foto do Gabe">
+        </div>
+    </div>
 
     <div id="janela-sobre" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src="168.png" class="aero-titlebar-icon" alt="icon">
+            <img src="visuais/168.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Sobre mim</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>

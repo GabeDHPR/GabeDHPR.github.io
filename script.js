@@ -1,20 +1,14 @@
 let zIndexAtual = 1;
-const MARGEM_TELA = 16; // distância mínima que uma janela deve manter das bordas da tela
+const MARGEM_TELA = 16;
 
 function abrirJanela(idJanela, elementoIcone) {
     const janela = document.getElementById(idJanela);
     const jaEstavaAberta = janela.style.display === 'block';
     janela.style.display = 'block';
-
-    // Só reposiciona perto do ícone se a janela ainda não estava aberta —
-    // se já estava aberta (e talvez arrastada pelo usuário), clicar de novo
-    // no ícone apenas traz ela pra frente, sem "teleportar" ela de volta.
     if (elementoIcone && !jaEstavaAberta) {
         posicionarPertoDoIcone(janela, elementoIcone);
     }
 
-    // Anima só quando a janela está de fato "nascendo" (estava fechada) —
-    // clicar de novo numa janela já aberta não deve replayar a animação.
     if (!jaEstavaAberta) {
         animarAbertura(janela, elementoIcone);
     }
@@ -23,12 +17,10 @@ function abrirJanela(idJanela, elementoIcone) {
 }
 
 function animarAbertura(janela, elementoIcone) {
-    // Faz a janela "crescer" a partir do canto onde o ícone está, como um
-    // app abrindo de verdade (efeito parecido com o do Windows/macOS).
     janela.style.transformOrigin = elementoIcone ? 'top left' : 'center';
 
     janela.classList.remove('abrindo');
-    void janela.offsetWidth; // força o navegador a "esquecer" a animação anterior, permitindo replay
+    void janela.offsetWidth; // deixar replay
     janela.classList.add('abrindo');
 
     janela.addEventListener('animationend', () => {
@@ -41,13 +33,9 @@ function posicionarPertoDoIcone(janela, elementoIcone) {
     const larguraJanela = janela.offsetWidth;
     const alturaJanela = janela.offsetHeight;
 
-    // Abre a janela logo à direita/abaixo do ícone...
     let left = posicaoIcone.right + 16;
     let top = posicaoIcone.top;
 
-    // ...mas nunca deixa nascer fora da tela visível. Isso evita tanto
-    // janelas "sumidas" quanto o scroll indesejado que aparecia quando
-    // elas abriam abaixo da área visível.
     const maxLeft = window.innerWidth - larguraJanela - MARGEM_TELA;
     const maxTop = window.innerHeight - alturaJanela - MARGEM_TELA;
 
@@ -62,10 +50,8 @@ function fecharJanela(idJanela) {
     const janela = document.getElementById(idJanela);
     const prefereMenosMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Sem animação pra quem prefere menos movimento — nesse caso a
-    // animação nem roda, então esperar o "animationend" deixaria a
-    // janela presa aberta.
-    if (prefereMenosMovimento) {
+    
+    if (prefereMenosMovimento) { // sem animação apenas fecha
         janela.style.display = 'none';
         return;
     }
@@ -75,7 +61,7 @@ function fecharJanela(idJanela) {
 
 function animarFechamento(janela) {
     janela.classList.remove('fechando');
-    void janela.offsetWidth; // permite replay caso a janela seja fechada mais de uma vez seguida
+    void janela.offsetWidth;
     janela.classList.add('fechando');
 
     janela.addEventListener('animationend', () => {
@@ -85,14 +71,10 @@ function animarFechamento(janela) {
 }
 
 function trazerParaFrente(elementoJanela) {
-    zIndexAtual++; // Aumenta o contador
+    zIndexAtual++;
     elementoJanela.style.zIndex = zIndexAtual;
 }
 
-// ---------------------------------------------------------------
-// Arrastar janelas pela barra de título — permite realocar e
-// sobrepor as janelas livremente, como num desktop de verdade.
-// ---------------------------------------------------------------
 function tornarArrastavel(janela) {
     const barraTitulo = janela.querySelector('.aero-titlebar');
     if (!barraTitulo) return;
@@ -102,7 +84,7 @@ function tornarArrastavel(janela) {
     let deslocamentoY = 0;
 
     barraTitulo.addEventListener('mousedown', (evento) => {
-        // não inicia arraste se o clique foi nos botões (minimizar/maximizar/fechar)
+        // não arrastar nos botões
         if (evento.target.closest('.aero-caption')) return;
 
         arrastando = true;
@@ -112,7 +94,7 @@ function tornarArrastavel(janela) {
 
         barraTitulo.classList.add('arrastando');
         trazerParaFrente(janela);
-        evento.preventDefault(); // evita selecionar texto durante o arraste
+        evento.preventDefault(); // corrigir bug de seleção de texto ao arrastar
     });
 
     document.addEventListener('mousemove', (evento) => {
@@ -124,7 +106,7 @@ function tornarArrastavel(janela) {
         let novoLeft = evento.clientX - deslocamentoX;
         let novoTop = evento.clientY - deslocamentoY;
 
-        // mantém a janela sempre dentro da área visível da tela
+        
         novoLeft = Math.max(0, Math.min(novoLeft, window.innerWidth - larguraJanela));
         novoTop = Math.max(0, Math.min(novoTop, window.innerHeight - alturaJanela));
 
@@ -140,3 +122,31 @@ function tornarArrastavel(janela) {
 }
 
 document.querySelectorAll('.aero-window').forEach(tornarArrastavel);
+
+
+// Balão de fala do avatar
+const mensagensAvatar = [
+    "Você pode encontrar oque procura abrindo os ícones!",
+    "Esse estilo de portfólio é inspirado no Windows 7, com o estilo frutiger aero.",
+];
+
+let indiceMensagemAvatar = 0;
+
+function alternarMensagemAvatar() {
+    const textoBalao = document.getElementById('texto-balao');
+    if (!textoBalao) return;
+
+    textoBalao.classList.add('balao-saindo');
+
+    setTimeout(() => {
+        indiceMensagemAvatar = (indiceMensagemAvatar + 1) % mensagensAvatar.length;
+        textoBalao.textContent = mensagensAvatar[indiceMensagemAvatar];
+        textoBalao.classList.remove('balao-saindo');
+    }, 350); // tempo do fade-out antes de trocar o texto
+}
+
+// Não fica trocando texto sozinho pra quem prefere menos movimento na tela
+const prefereMenosMovimentoGlobal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefereMenosMovimentoGlobal) {
+    setInterval(alternarMensagemAvatar, 5000);
+}

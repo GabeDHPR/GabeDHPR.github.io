@@ -306,10 +306,10 @@
   }
 }
 
-/* ---- Animação de fechamento — a janela "encolhe" de volta pro ícone ---- */
+
 .aero-window.fechando {
   animation: janela-fechar 0.18s cubic-bezier(0.4, 0, 1, 1);
-  pointer-events: none; /* evita cliques na janela enquanto ela some */
+  pointer-events: none;
 }
 
 @keyframes janela-fechar {
@@ -329,24 +329,17 @@
     animation: none;
   }
 }
-
-/* ---------------------------------------------------------------
-   Fundo da página — preenche a tela toda (referência 1920x1080)
-   --------------------------------------------------------------- */
 html, body {
   margin: 0;
   min-height: 100vh;
 }
 
 body {
-  background: url("fundo frutiger.jpg") no-repeat center center fixed;
+  background: url("visuais/fundo frutiger.jpg") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
 }
 
-/* ---------------------------------------------------------------
-   Ícones do desktop — bolhas de vidro flutuando no lugar
-   --------------------------------------------------------------- */
 #desktop {
   display: flex;
   flex-wrap: wrap;
@@ -356,29 +349,28 @@ body {
   padding: 140px 120px;
   min-height: 100vh;
   box-sizing: border-box;
-  /* reserva a coluna direita (onde vai o card de apresentação) em
-     todas as linhas, não só na última */
-  max-width: calc(100vw - 420px);
+
+  max-width: calc(100vw - 660px);
 }
 
 .icone {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
+  width: 180px;
   cursor: pointer;
   text-align: center;
   color: #000;
-  /* área de toque um pouco maior que a bolha, sem cortar a animação */
+
   padding-top: 8px;
 }
 
-/* Bolha de vidro que envolve o ícone */
+
 .icone .bolha {
   position: relative;
   isolation: isolate;
-  width: 140px;
-  height: 140px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -389,7 +381,7 @@ body {
   animation-iteration-count: infinite;
 }
 
-/* Vidro colorido + brilho especular, no mesmo espírito do .aero-window */
+
 .icone .bolha::before {
   content: "";
   position: absolute;
@@ -406,7 +398,7 @@ body {
     0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* Fosca o que está atrás da bolha, reforçando o efeito de vidro */
+
 .icone .bolha::after {
   content: "";
   position: absolute;
@@ -418,25 +410,24 @@ body {
 }
 
 .icone .bolha img {
-  width: 82px;
-  height: 82px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
   pointer-events: none;
 }
 
 .icone .fonte-arquivo {
-  font-size: 14px;
+  font-size: 16px;
   text-shadow: 0 0 4px #fff, 0 0 4px #fff, 0 0 7px #fff;
 }
 
-/* Leve zoom/realce ao passar o mouse, sem interromper a flutuação */
+
 .icone:hover .bolha {
   filter: brightness(1.08);
 }
 
-/* Flutuação bem sutil: sobe/desce e gira um pouco, sempre voltando
-   ao lugar — nunca sai da área da bolha. */
+
 @keyframes bolha-flutuar {
   0%   { transform: translate(0, 0) rotate(0deg); }
   25%  { transform: translate(2px, -7px) rotate(0.6deg); }
@@ -445,32 +436,128 @@ body {
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* Duração/atraso diferentes em cada ícone para não flutuarem em
-   sincronia (fica mais orgânico, "vivo"). */
+
 .icone:nth-child(1) .bolha { animation-duration: 4.6s; animation-delay: 0s; }
 .icone:nth-child(2) .bolha { animation-duration: 5.3s; animation-delay: -1.4s; }
 .icone:nth-child(3) .bolha { animation-duration: 4.9s; animation-delay: -2.7s; }
 .icone:nth-child(4) .bolha { animation-duration: 5.6s; animation-delay: -0.6s; }
 .icone:nth-child(5) .bolha { animation-duration: 4.3s; animation-delay: -3.2s; }
 
-/* Respeita quem prefere menos movimento na tela */
+
 @media (prefers-reduced-motion: reduce) {
   .icone .bolha {
     animation: none;
   }
 }
 
-/* ---------------------------------------------------------------
-   Espaço reservado no canto inferior direito para o card com
-   nome/apresentação. É só um placeholder — estilize/remova a
-   borda tracejada quando for montar o card de verdade.
-   --------------------------------------------------------------- */
+
 #cartao-apresentacao {
   position: fixed;
   right: 40px;
   bottom: 40px;
-  width: 360px;
-  min-height: 180px;
-  border: 1px dashed rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+
+.bolha-avatar {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bolha-flutuar 6s ease-in-out infinite;
+}
+
+.bolha-avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.6), transparent 46%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.04) 55%),
+    hsl(280 70% 55% / 0.4);
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.5),
+    inset 0 -10px 22px rgba(0, 0, 0, 0.2),
+    0 12px 26px rgba(0, 0, 0, 0.35);
+}
+
+.bolha-avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(6px) saturate(1.6);
+  backdrop-filter: blur(6px) saturate(1.6);
+}
+
+.bolha-avatar img {
+  width: 188px;
+  height: 188px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bolha-avatar {
+    animation: none;
+  }
+}
+
+
+.balao-fala {
+  position: relative;
+  max-width: 340px;
+  margin-bottom: 96px;
+  padding: 20px 26px;
+  border-radius: 24px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #133650;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.35) 45%, rgba(190, 226, 250, 0.55)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(205, 233, 250, 0.7));
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -14px 22px rgba(120, 190, 230, 0.28);
+  -webkit-backdrop-filter: blur(10px) saturate(1.7);
+  backdrop-filter: blur(10px) saturate(1.7);
+}
+
+.balao-fala::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  bottom: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.85), rgba(205, 233, 250, 0.6));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: rotate(45deg);
+}
+
+.balao-fala p {
+  margin: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.balao-fala p.balao-saindo {
+  opacity: 0;
+  transform: translateY(6px);
 }
