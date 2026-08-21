@@ -38,28 +38,28 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .chat-wrapper {
   width: 100%;
-  height: 100%;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/238916/1200x768_fond-ecran-defaut-windows-xp.jpeg");
+  height: auto;
+  min-height: 100%;
   background-size: cover;
 }
 .chat-wrapper .chat {
   width: 497px;
   height: 502px;
   border-radius: 5px;
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: 0px;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0px;
   padding: 85px 165px 170px 20px;
   box-sizing: border-box;
   margin: auto;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/238916/msn.png");
+  background-image: url("../visuais/chat.PNG");
   background-size: cover;
 }
 
@@ -86,7 +86,7 @@ html, body {
   top: 92px;
   right: 25px;
   bottom: 0;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/238916/avatar.png");
+  background-image: url("../visuais/perfil.png");
   background-size: cover;
   background-color: #fafafa;
 }
