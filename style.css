@@ -287,6 +287,49 @@
   text-shadow: 0 0 4px #fff, 0 0 6px #fff;
 }
 
+/* ---- Animação de abertura — a janela "nasce" a partir do ícone ---- */
+.aero-window.abrindo {
+  animation: janela-abrir 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes janela-abrir {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(16px);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---- Animação de fechamento — a janela "encolhe" de volta pro ícone ---- */
+.aero-window.fechando {
+  animation: janela-fechar 0.18s cubic-bezier(0.4, 0, 1, 1);
+  pointer-events: none; /* evita cliques na janela enquanto ela some */
+}
+
+@keyframes janela-fechar {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5) translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-window.abrindo,
+  .aero-window.fechando {
+    animation: none;
+  }
+}
+
 /* ---------------------------------------------------------------
    Fundo da página — preenche a tela toda (referência 1920x1080)
    --------------------------------------------------------------- */

@@ -13,7 +13,27 @@ function abrirJanela(idJanela, elementoIcone) {
         posicionarPertoDoIcone(janela, elementoIcone);
     }
 
+    // Anima só quando a janela está de fato "nascendo" (estava fechada) —
+    // clicar de novo numa janela já aberta não deve replayar a animação.
+    if (!jaEstavaAberta) {
+        animarAbertura(janela, elementoIcone);
+    }
+
     trazerParaFrente(janela);
+}
+
+function animarAbertura(janela, elementoIcone) {
+    // Faz a janela "crescer" a partir do canto onde o ícone está, como um
+    // app abrindo de verdade (efeito parecido com o do Windows/macOS).
+    janela.style.transformOrigin = elementoIcone ? 'top left' : 'center';
+
+    janela.classList.remove('abrindo');
+    void janela.offsetWidth; // força o navegador a "esquecer" a animação anterior, permitindo replay
+    janela.classList.add('abrindo');
+
+    janela.addEventListener('animationend', () => {
+        janela.classList.remove('abrindo');
+    }, { once: true });
 }
 
 function posicionarPertoDoIcone(janela, elementoIcone) {
@@ -40,7 +60,28 @@ function posicionarPertoDoIcone(janela, elementoIcone) {
 
 function fecharJanela(idJanela) {
     const janela = document.getElementById(idJanela);
-    janela.style.display = 'none';
+    const prefereMenosMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Sem animação pra quem prefere menos movimento — nesse caso a
+    // animação nem roda, então esperar o "animationend" deixaria a
+    // janela presa aberta.
+    if (prefereMenosMovimento) {
+        janela.style.display = 'none';
+        return;
+    }
+
+    animarFechamento(janela);
+}
+
+function animarFechamento(janela) {
+    janela.classList.remove('fechando');
+    void janela.offsetWidth; // permite replay caso a janela seja fechada mais de uma vez seguida
+    janela.classList.add('fechando');
+
+    janela.addEventListener('animationend', () => {
+        janela.classList.remove('fechando');
+        janela.style.display = 'none';
+    }, { once: true });
 }
 
 function trazerParaFrente(elementoJanela) {
