@@ -1,4 +1,4 @@
-let zIndexAtual = 1;
+let zIndexAtual = 500;
 const MARGEM_TELA = 16;
 
 function abrirJanela(idJanela, elementoIcone) {
@@ -124,29 +124,49 @@ function tornarArrastavel(janela) {
 document.querySelectorAll('.aero-window').forEach(tornarArrastavel);
 
 
-// Balão de fala do avatar
-const mensagensAvatar = [
-    "Você pode encontrar oque procura abrindo os ícones!",
-    "Esse estilo de portfólio é inspirado no Windows 7, com o estilo frutiger aero.",
-];
+function tornarChatMsnArrastavel() {
+    const janela = document.getElementById('chat-msn-flutuante');
+    const alca = janela.querySelector('.chat-msn-drag-handle');
+    if (!janela || !alca) return;
 
-let indiceMensagemAvatar = 0;
+    let arrastando = false;
+    let deslocamentoX = 0;
+    let deslocamentoY = 0;
 
-function alternarMensagemAvatar() {
-    const textoBalao = document.getElementById('texto-balao');
-    if (!textoBalao) return;
+    alca.addEventListener('mousedown', (evento) => {
+        arrastando = true;
+        const retangulo = janela.getBoundingClientRect();
+        deslocamentoX = evento.clientX - retangulo.left;
+        deslocamentoY = evento.clientY - retangulo.top;
 
-    textoBalao.classList.add('balao-saindo');
+        // Trocar de bottom/right para top/left ao começar a arrastar
+        janela.style.right = 'auto';
+        janela.style.bottom = 'auto';
+        janela.style.left = retangulo.left + 'px';
+        janela.style.top = retangulo.top + 'px';
 
-    setTimeout(() => {
-        indiceMensagemAvatar = (indiceMensagemAvatar + 1) % mensagensAvatar.length;
-        textoBalao.textContent = mensagensAvatar[indiceMensagemAvatar];
-        textoBalao.classList.remove('balao-saindo');
-    }, 350); // tempo do fade-out antes de trocar o texto
+        evento.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (evento) => {
+        if (!arrastando) return;
+
+        const larguraJanela = janela.offsetWidth;
+        const alturaJanela = janela.offsetHeight;
+
+        let novoLeft = evento.clientX - deslocamentoX;
+        let novoTop = evento.clientY - deslocamentoY;
+
+        novoLeft = Math.max(0, Math.min(novoLeft, window.innerWidth - larguraJanela));
+        novoTop = Math.max(0, Math.min(novoTop, window.innerHeight - alturaJanela));
+
+        janela.style.left = novoLeft + 'px';
+        janela.style.top = novoTop + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+        arrastando = false;
+    });
 }
 
-// Não fica trocando texto sozinho pra quem prefere menos movimento na tela
-const prefereMenosMovimentoGlobal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!prefereMenosMovimentoGlobal) {
-    setInterval(alternarMensagemAvatar, 5000);
-}
+document.addEventListener('DOMContentLoaded', tornarChatMsnArrastavel);

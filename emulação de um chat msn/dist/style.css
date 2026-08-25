@@ -110,7 +110,7 @@ html, body {
 .chat-container {
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 2315px;
+  width: 100%;
   height: 245px;
   position: relative;
   z-index: 0;

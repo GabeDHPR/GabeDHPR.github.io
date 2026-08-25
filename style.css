@@ -449,27 +449,40 @@ body {
     animation: none;
   }
 }
-.chat-msn-window {
-  position: fixed !important;
+.chat-msn-flutuante {
+  position: fixed;
   bottom: 20px;
   right: 20px;
-  top: 100px;
-  width: 530px !important;
-  height: 620px !important;
-  z-index: 1000;
+  width: 530px;
+  height: 550px;
+  z-index:  500;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: none;
+  isolation: isolate;
 }
 
-.chat-msn-body {
-  min-height: 580px !important;
-  height: 580px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  background: transparent !important;
+.chat-msn-drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  cursor: grab;
+  z-index: 10;
+  background: transparent;
 }
 
-.chat-msn-body iframe {
+.chat-msn-drag-handle:active {
+  cursor: grabbing;
+}
+
+.chat-msn-flutuante iframe {
+  pointer-events: auto;
+  border-radius: 8px;
   width: 100%;
   height: 100%;
   display: block;
   border: none;
+  background: transparent;
 }
