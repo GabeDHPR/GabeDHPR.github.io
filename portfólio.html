@@ -39,8 +39,14 @@
                 <button class="close" title="Fechar" onclick="fecharJanela('janela-sobre')"></button>
             </div>
         </div>
-        <div class="aero-body">
-            Sobre mim
+        <div class="aero-body sobre-card">
+            <p class="sobre-texto">Me chamo <strong>Gabriel Dahlem Pereira</strong>, atualmente tenho 23 anos e moro em <strong>Canoas, RS</strong>. Sou um estudante na área da tecnologia.</p>
+            
+            <p class="sobre-texto">Adoro tecnologias retros e estilos que nos remetem ao passado, por isso criei esse site no estilo <strong>Frutiger Aero</strong> remetente à época do <strong>Windows 7</strong>, onde a tecnologia era vista como utópica, em conexão com a natureza e limpa.</p>
+            
+            <p class="sobre-texto">Antes de vir para essa área eu era muito das artes — adoro designs e também dançar (inclusive fiz dança na <strong>UFRGS</strong> mas acabei desistindo e trocando para <strong>TADS no IFRS</strong>). Então já sabia que quando eu fizesse essa mudança de carreira eu iria ficar mais ligado na parte visual da tecnologia.</p>
+            
+            <p class="sobre-texto sobre-conclusao">Assim espero conseguir trazer a beleza de um visual bem feito com funcionalidade e interfaces intuitivas <span class="sobre-smile">:)</span></p>
         </div>
         <div class="aero-statusbar">
             <div class="aero-gripper"></div>
@@ -49,7 +55,7 @@
 
     <div id="janela-formações" class="aero-window" style="display: none;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src="livro.png" class="aero-titlebar-icon" alt="icon">
+            <img src="visuais/livro.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Formações</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -58,7 +64,14 @@
             </div>
         </div>
         <div class="aero-body">
-             Formações acadêmicas e cursos que você fez, com detalhes, datas e instituições. Aqui você pode colocar imagens, textos, links para certificados, etc.
+            <div class="formacao-card">
+                <div class="formacao-conteudo">
+                    <h3 class="formacao-titulo">Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+                    <p class="formacao-instituicao">Instituto Federal do Rio Grande do Sul (IFRS)</p>
+                    <p class="formacao-periodo">2025 - 2028</p>
+                </div>
+                <img src="visuais/ifrs-logo.png" alt="Logo IFRS" class="formacao-logo">
+            </div>
         </div>
         <div class="aero-statusbar">
             <div class="aero-gripper"></div>
@@ -67,7 +80,7 @@
 
     <div id="janela-projetos" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src="218.png" class="aero-titlebar-icon" alt="icon">
+            <img src="visuais/218.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Projetos</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -85,7 +98,7 @@
 
     <div id="janela-contatos" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src="120.png" class="aero-titlebar-icon" alt="icon">
+            <img src="visuais/120.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Contatos</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -103,7 +116,7 @@
 
     <div id="janela-experiencias" class="aero-window" style="display: none; top: 100px; left: 150px;" onmousedown="trazerParaFrente(this)">
         <div class="aero-titlebar">
-            <img src="098.png" class="aero-titlebar-icon" alt="icon">
+            <img src="visuais/098.png" class="aero-titlebar-icon" alt="icon">
             <div class="aero-titlebar-text">Experiências</div>
             <div class="aero-caption">
                 <button class="min" title="Minimizar"></button>
@@ -112,7 +125,20 @@
             </div>
         </div>
         <div class="aero-body">
-             Informações de experiência, como cargos, datas e instituições. Aqui você pode colocar imagens, textos, links para perfis, etc.
+            <div class="experiencia-card">
+                <div class="experiencia-logos">
+                    <img src="visuais/eldorado-logo.png" alt="Logo Eldorado" class="experiencia-logo">
+                    <span class="experiencia-separador">+</span>
+                    <img src="visuais/petrobras-logo.png" alt="Logo Petrobras" class="experiencia-logo">
+                </div>
+                <div class="experiencia-conteudo">
+                    <h3 class="experiencia-titulo">Residência FULLSTACK 5.0</h3>
+                    <p class="experiencia-resumo">Programa de formação em desenvolvimento full stack, com foco em práticas modernas e alinhamento ao mercado de trabalho.</p>
+                    <p class="experiencia-instituicao">Instituto Eldorado</p>
+                    <p class="experiencia-empresa">Em parceria com Petrobras</p>
+                    <p class="experiencia-periodo">2025</p>
+                </div>
+            </div>
         </div>
         <div class="aero-statusbar">
             <div class="aero-gripper"></div>

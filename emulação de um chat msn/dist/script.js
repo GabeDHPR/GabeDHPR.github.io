@@ -1,33 +1,23 @@
 var discussion = [
   {
-    name:"Karen",
-    text:"Hi, i'm Karen",
+    name:"Gabe",
+    text:"Opa, tudo certo?",
     delay: 3500,
     offsetDelay: 250,
     isWizz: false,
   },
+
   {
-    delay: 2500,
-    isWizz: true,
-  },
-  {
-    name:"Karen",
-    text:"Are u there ?",
+    name:"Gabe",
+    text:"Esse aqui é meu portfólio virtual",
     delay: 1000,
     offsetDelay: 250,
     isWizz: false,
   },
   {
-    name:"Marthy",
-    text:"Oh yeah, hi Karen !",
+    name:"Gabe",
+    text:"Se quiser ver as informações que procura só clicar nos icones!!",
     delay: 2500,
-    offsetDelay: 250,
-    isWizz: false,
-  },
-  {
-    name:"Karen",
-    text:"Karen just leave the channel.",
-    delay: 1900,
     offsetDelay: 250,
     isWizz: false,
   }
