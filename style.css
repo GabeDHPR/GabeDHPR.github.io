@@ -330,7 +330,6 @@
   }
 }
 
-/* ---- Estilos para Formação ---- */
 .formacao-card {
   display: flex;
   align-items: center;
@@ -370,14 +369,12 @@
 }
 
 .formacao-logo {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* ---- Estilos para Experiência ---- */
 .experiencia-card {
   display: flex;
   flex-direction: column;
@@ -401,7 +398,7 @@
   height: 70px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+
 }
 
 .experiencia-separador {
@@ -454,8 +451,9 @@
 }
 
 .sobre-texto {
-  margin: 0 0 12px 0;
-  font-size: 12px;
+  margin: 0 0 0px 0;
+  margin-bottom: -10px;
+  font-size: 15px;
   line-height: 1.6;
   color: #1b1b1b;
   text-align: justify;
@@ -475,10 +473,17 @@
   color: #d4a017;
   font-weight: bold;
 }
-.sobre-paragrafo-com-imagem {
+.sobre-conteudo-superior {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+}
+.sobre-textos-iniciais {
+  flex: 1;
+}
+.sobre-conteudo-inferior{
+  margin-top: -60px;
+  margin-bottom: -15px;
 }
 
  
@@ -486,17 +491,13 @@
  
 .sobre-foto {
   width: 150px;
-  height: 150px;
+  height: auto; 
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(42, 107, 166, 0.3);
+  flex-shrink: 0; 
 }
 
-.sobre-tamagotchi {
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-}
 
 html, body {
   margin: 0;
