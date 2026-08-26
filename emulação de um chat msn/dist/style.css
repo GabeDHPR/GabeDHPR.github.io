@@ -59,7 +59,7 @@ html, body {
   padding: 85px 165px 170px 20px;
   box-sizing: border-box;
   margin: auto;
-  background-image: url("../visuais/chat.PNG");
+   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/238916/msn.png");
   background-size: cover;
 }
 
@@ -84,9 +84,9 @@ html, body {
   height: 97px;
   position: absolute;
   top: 92px;
-  right: 25px;
+  right: 21px;
   bottom: 0;
-  background-image: url("../visuais/perfil.png");
+  background-image: url("../visuais/perfil.jpg");
   background-size: cover;
   background-color: #fafafa;
 }
@@ -95,9 +95,9 @@ html, body {
   width: 97px;
   height: 97px;
   position: absolute;
-  top: 356px;
-  right: 25px;
-  bottom: 0;
+  top: 357px;
+  right: 21px;
+  bottom: 0px;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/238916/avatar.png");
   background-size: cover;
   background-color: #fafafa;

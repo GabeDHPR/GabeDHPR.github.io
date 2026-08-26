@@ -475,6 +475,28 @@
   color: #d4a017;
   font-weight: bold;
 }
+.sobre-paragrafo-com-imagem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+ 
+
+ 
+.sobre-foto {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(42, 107, 166, 0.3);
+}
+
+.sobre-tamagotchi {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
 
 html, body {
   margin: 0;
