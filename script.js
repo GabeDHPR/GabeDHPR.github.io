@@ -170,3 +170,28 @@ function tornarChatMsnArrastavel() {
 }
 
 document.addEventListener('DOMContentLoaded', tornarChatMsnArrastavel);
+
+
+function copiarEmail(evento) {
+    evento.preventDefault();
+    const email = 'gabriel.dahlem@gmail.com';
+
+    navigator.clipboard.writeText(email).then(() => {
+        mostrarAviso('E-mail copiado: ' + email);
+    }).catch(() => {
+        mostrarAviso('Não foi possível copiar o e-mail');
+    });
+}
+
+function mostrarAviso(mensagem) {
+    const aviso = document.getElementById('aviso-toast');
+    if (!aviso) return;
+
+    aviso.textContent = mensagem;
+    aviso.classList.add('mostrar');
+
+    clearTimeout(mostrarAviso._timeoutId);
+    mostrarAviso._timeoutId = setTimeout(() => {
+        aviso.classList.remove('mostrar');
+    }, 2500);
+}

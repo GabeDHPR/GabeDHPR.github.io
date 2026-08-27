@@ -118,7 +118,20 @@
             </div>
         </div>
         <div class="aero-body">
-             Informações de contato, como e-mail, telefone e redes sociais. Aqui você pode colocar imagens, textos, links para perfis, etc.
+            <div class="contatos-lista">
+                <a class="contato-item" onclick="copiarEmail(event)">
+                    <img src="visuais/gmail.png" alt="Gmail" class="contato-icone">
+                    <span class="contato-nome">Gmail</span>
+                </a>
+                <a href="https://github.com/GabeDHPR" class="contato-item" target="_blank">
+                    <img src="visuais/github.png" alt="GitHub" class="contato-icone">
+                    <span class="contato-nome">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/gabrieldahlem/" class="contato-item" target="_blank">
+                    <img src="visuais/linkedin.png" alt="LinkedIn" class="contato-icone">
+                    <span class="contato-nome">LinkedIn</span>
+                </a>
+            </div>
         </div>
         <div class="aero-statusbar">
             <div class="aero-gripper"></div>
@@ -164,6 +177,8 @@
     </iframe>
     
 </div>
+
+    <div id="aviso-toast" class="aviso-toast"></div>
 
     <script src="script.js"></script>
 </body>
