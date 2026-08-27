@@ -139,7 +139,6 @@ function tornarChatMsnArrastavel() {
         deslocamentoX = evento.clientX - retangulo.left;
         deslocamentoY = evento.clientY - retangulo.top;
 
-        // Trocar de bottom/right para top/left ao começar a arrastar
         janela.style.right = 'auto';
         janela.style.bottom = 'auto';
         janela.style.left = retangulo.left + 'px';
